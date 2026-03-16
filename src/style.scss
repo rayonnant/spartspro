@@ -18,13 +18,15 @@
 
 html {
   font-size: 16px;
+  padding: 0 10px;
 }
 
 body {
-  max-width: 1440px;
   -webkit-font-smoothing: antialiased;
   font-family: Roboto, sans-serif;
   margin: 0 auto 50px;
+  //margin-left: 10px;
+  //margin-right: 10px;
 }
 
 .header {
@@ -60,6 +62,7 @@ body {
     line-height: 1.5;
     font-size: 1rem;
     transition: color 0.5s;
+
     &:hover {
       color: var(--orange);
       transition: color 0.3s;
@@ -314,3 +317,73 @@ body {
     max-width: 320px;
   }
 }
+
+
+@media (min-width: 1440px) {
+  body {
+    max-width: 1160px;
+  }
+
+  .equipment__item:nth-child(6) .equipment__item-title {
+    max-width: 280px;
+  }
+
+  .about-company {
+    margin-top: 80px;
+    &__images {
+      align-content: start;
+      row-gap: 24px;
+      column-gap: 26.5px;
+    }
+
+    &__image {
+      &:nth-child(1) {
+        width: 565px;
+        grid-row: 1/2;
+      }
+
+      &:nth-child(2) {
+        width: 270.08px;
+        grid-row: 2/3;
+      }
+
+      &:nth-child(3) {
+        width: 268.48px;
+        grid-row: 2/3;
+      }
+    }
+  }
+
+}
+
+@media (min-width: 1920px) {
+  body {
+    max-width: 1440px;
+  }
+
+  .equipment__item:nth-child(6) .equipment__item-title {
+    max-width: 100%;
+  }
+
+  .about-company {
+    margin-top: 0;
+    &__images {
+      align-content: space-between;
+      column-gap: 33.5px;
+    }
+    &__image {
+      &:nth-child(1) {
+        width: 705px;
+      }
+
+      &:nth-child(2) {
+        width: 337px;
+      }
+
+      &:nth-child(3) {
+        width: 335px;
+      }
+    }
+  }
+}
+
