@@ -12,11 +12,23 @@
 <header class="header">
     <img src="../src/assets/images/logo.png" alt="logo SpartsPro" class="header__logo"/>
     <nav class="header__nav">
-        <a href="#" class="header__nav-link">ГЛАВНАЯ</a>
-        <a href="#" class="header__nav-link">КАТАЛОГ</a>
-        <a href="#" class="header__nav-link">О КОМПАНИИ</a>
-        <a href="#" class="header__nav-link">ОПЛАТА И ДОСТАВКА</a>
-        <a href="#" class="header__nav-link">КОНТАКТЫ</a>
+        <ul class="header__nav-list">
+            <li class="header__nav-item">
+                <a href="#" class="header__nav-link header__nav-link--disabled">ГЛАВНАЯ</a>
+            </li>
+            <li class="header__nav-item">
+                <a href="#" class="header__nav-link">КАТАЛОГ</a>
+            </li>
+            <li class="header__nav-item">
+                <a href="#" class="header__nav-link">О КОМПАНИИ</a>
+            </li>
+            <li class="header__nav-item">
+                <a href="#" class="header__nav-link">ОПЛАТА И ДОСТАВКА</a>
+            </li>
+            <li class="header__nav-item">
+                <a href="#" class="header__nav-link">КОНТАКТЫ</a>
+            </li>
+        </ul>
     </nav>
 </header>
 <main>
@@ -48,7 +60,7 @@
                 </div>
             </article>
             <article class="equipment__item">
-                <img src="../src/assets/images/9X21F.png" alt="GRS 9X21F(9Х17)-IWRC 1570" class="equipment__item-image">
+                <img src="../src/assets/images/9X21F(2).png" alt="GRS 9X21F(9Х17)-IWRC 1570" class="equipment__item-image">
                 <div class="equipment__item-content">
                     <span class="equipment__item-title">Стальной канат для лифта GRS 9X21F(9Х17)-IWRC 1570</span>
                     <span class="equipment__stock">В наличии 50 м.</span>
@@ -78,9 +90,12 @@
     <section class="about-company">
         <h2 class="about-company__title">О КОМПАНИИ</h2>
         <div class="about-company__images">
+            <img src="../src/assets/images/elevator_from_top.png" alt="фото лифта сверху" class="about-company__image">
+            <img src="../src/assets/images/two_elevators.png" alt="фото двух капсульных лифтов" class="about-company__image">
+            <img src="../src/assets/images/elevator_from_below.png" alt="фото лифта снизу" class="about-company__image">
         </div>
         <div class="about-company__description">
-            <p>
+            <p class="about-company__paragraph">
                 Компания «SPARTSPRO» специализируется на поставках лифтового оборудования,
                 комплектующих и запчастей для лифтов и эскалаторов ведущих мировых и российских
                 производителей.
@@ -95,7 +110,7 @@
                     доставка без задержек.
                 </li>
             </ul>
-            <p>Мы обеспечиваем бесперебойные поставки для ваших проектов. Оставьте заявку – и получите коммерческое
+            <p class="about-company__invitation">Мы обеспечиваем бесперебойные поставки для ваших проектов. Оставьте заявку – и получите коммерческое
                 предложение в кратчайшие сроки!</p>
             <a href="#" class="button about-company__link">Подробнее</a>
         </div>
