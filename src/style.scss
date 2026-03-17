@@ -25,8 +25,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: Roboto, sans-serif;
   margin: 0 auto 50px;
-  //margin-left: 10px;
-  //margin-right: 10px;
 }
 
 .header {
@@ -35,9 +33,11 @@ body {
   justify-content: space-between;
   height: 80px;
   align-items: center;
+  position: relative;
+  background-color: red;
 
   &__logo {
-    width: 11.25rem;
+    //width: 180px;
     height: auto;
   }
 
@@ -82,6 +82,7 @@ body {
 
 }
 
+
 .button {
   display: inline-block;
   color: #FFFFFF;
@@ -110,20 +111,15 @@ body {
 }
 
 .equipment {
-  margin-top: 5rem;
 
   &__title {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 2.25rem;
     line-height: 1.35;
   }
 
   &__list {
-    margin-top: 1.875rem;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px;
   }
 
   &__item {
@@ -133,18 +129,6 @@ body {
     box-shadow: inset 0 0 0 1px var(--stroke);
     border-radius: 8px;
 
-    &:nth-child(1),
-    &:nth-child(3),
-    &:nth-child(5) {
-      grid-column: 1 / 7;
-    }
-
-    &:nth-child(2),
-    &:nth-child(4),
-    &:nth-child(6) {
-      grid-column: 7 / 13;
-    }
-
     &-image {
       width: 220px;
       height: 220px;
@@ -153,8 +137,6 @@ body {
     }
 
     &-content {
-      margin-left: 1.875rem;
-      height: 158px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -176,13 +158,10 @@ body {
   &__stock {
     position: relative;
     font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
     font-weight: 400;
     line-height: 1.45;
     padding-left: 24px;
     grid-area: stock;
-    margin-top: auto;
-    margin-bottom: 12px;
     align-self: flex-start;
 
     &::before {
@@ -213,15 +192,12 @@ body {
 
 .about-company {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.875rem;
+  gap: 30px;
 
   &__title {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 2.25rem;
     line-height: 1.35;
-    grid-column: 1 / 13;
   }
 
   &__images {
@@ -237,19 +213,16 @@ body {
     height: auto;
 
     &:nth-child(1) {
-      grid-column: 1/7;
       grid-row: 1/2;
       width: 705px;
     }
 
     &:nth-child(2) {
-      grid-column: 1/4;
       grid-row: 2/3;
       width: 337px;
     }
 
     &:nth-child(3) {
-      grid-column: 4/7;
       grid-row: 2/3;
       width: 335px;
     }
@@ -318,19 +291,358 @@ body {
   }
 }
 
+@media (width < 1440px) {
+  .header__nav-burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    border: 1px solid var(--normal);
+    border-radius: 8px;
+    position: relative;
+
+    &-line {
+      display: block;
+      position: absolute;
+      width: 23px;
+      height: 2px;
+      background: var(--normal);
+      transition: all 0.3s ease;
+      &:nth-child(1) {
+        transform: translateY(-8px);
+      }
+      &:nth-child(3) {
+        transform: translateY(8px);
+      }
+    }
+
+    &.active .header__nav-burger-line {
+        &:nth-child(1) {
+          transform: translateY(0) rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+      &:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
+  }
+  .header__nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10000;
+  }
+  .header__nav-list.active {
+    max-height: 300px;
+    transition: max-height 0.7s ease;
+  }
+  .header__nav-item {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+  }
+}
+
+@media (width < 768px) {
+  .header__nav-burger {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    max-width: 360px;
+    background-color: greenyellow;
+  }
+
+  .header {
+    &__logo {
+      width: 185px;
+    }
+  }
+
+  .equipment {
+    margin-top: 49px;
+
+    &__list {
+      margin-top: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    &__title {
+      font-size: 20px;
+    }
+    &__stock {
+      font-size: 14px;
+      line-height: 1.45;
+      margin-top: 10px;
+      margin-bottom: 9px;
+      margin-left: -2px;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 7px;
+      box-shadow: 0 0 0 1px var(--stroke);
+
+      &-button {
+        padding: 8px 25px 12px;
+      }
+
+      &:nth-child(n){
+        grid-column: 1 / 3;
+      }
+      &:nth-child(2n){
+        grid-column: 3 / 5;
+      }
+
+      &:nth-child(n+5) {
+        display: none;
+      }
+
+      &-title {
+        max-width: 150px;
+        font-size: 16px;
+        margin-top: -2px;
+        line-height: 1.5;
+        height: 100px;
+      }
+
+      &-image {
+        width: 170px;
+        height: 170px;
+      }
+
+      &-content {
+        padding-left: 5px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__catalog-link {
+      margin-top: 22px;
+    }
+  }
+
+  .about-company {
+    margin-top: 50px;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__title {
+      grid-column: 1 / 7;
+      font-size: 20px;
+    }
+
+    &__images {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-row-gap: 14px;
+      grid-column-gap: 18px;
+    }
+
+    &__image {
+      &:nth-child(1) {
+        grid-column: 1/3;
+        grid-row: 1/2;
+        width: 360px;
+      }
+
+      &:nth-child(2) {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        width: 172.09px;
+      }
+
+      &:nth-child(3) {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        width: 171.06px
+      }
+    }
+
+    &__description {
+      grid-column: 1 / 7;
+    }
+
+    &__link {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    max-width: 576px;
+  }
+
+  .header {
+    &__logo {
+      width: 180px;
+    }
+  }
+
+}
+
+@media (min-width: 1160px) {
+  body {
+    max-width: 768px;
+    background-color: violet;
+  }
+
+  .header {
+    &__logo {
+      width: 180px; // todo: перенести на лейаут раньше
+    }
+  }
+
+  .equipment {
+    margin-top: 50px;
+
+    &__list {
+      margin-top: 30px; // todo: добавить пораньше когда сделаю другие лейауты
+      gap: 30px; // todo: добавить пораньше когда сделаю другие лейауты
+    }
+    &__title {
+      font-size: 30px;
+    }
+
+    &__stock {
+      font-size: 16px; // todo: перенести пораньше на лейаут
+      line-height: 1.5; // todo: перенести пораньше на лейаут
+      margin-top: auto;// todo: перенести пораньше на лейаут
+      margin-bottom: 12px;// todo: перенести пораньше на лейаут
+    }
+    &__item {
+      padding-bottom: 0; // todo: перенести пораньше на лейаут
+     &:nth-child(n){
+       grid-column: 1 / 7;
+     }
+
+      &-title {
+        max-width: 285px;
+      }
+
+      &-content {
+        margin-left: 1.875rem;
+        height: 158px; // todo: перенести на layout раньше
+      }
+    }
+  }
+
+  .about-company {
+    margin-top: 50px;
+    grid-template-columns: repeat(6, 1fr);
+
+    &__title {
+      grid-column: 1 / 7;
+      font-size: 30px;
+    }
+
+    &__images {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-row-gap: 33px;
+      grid-column-gap: 36px;
+    }
+
+    &__image {
+      &:nth-child(1) {
+        grid-column: 1/7;
+        grid-row: 1/2;
+        width: 100%;
+      }
+
+      &:nth-child(2) {
+        grid-column: 1/4;
+        grid-row: 2/3;
+        width: 367.11px;
+      }
+
+      &:nth-child(3) {
+        grid-column: 4/7;
+        grid-row: 2/3;
+        width: 364.94px
+      }
+    }
+
+    &__description {
+      grid-column: 1 / 7;
+    }
+  }
+
+
+}
 
 @media (min-width: 1440px) {
   body {
     max-width: 1160px;
+    background-color: green;
+
   }
 
-  .equipment__item:nth-child(6) .equipment__item-title {
-    max-width: 280px;
+  .header__nav-burger {
+    display: none;
+  }
+
+  .equipment {
+    margin-top: 80px;
+    &__list {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__item {
+      &:nth-child(1),
+      &:nth-child(3),
+      &:nth-child(5) {
+        grid-column: 1 / 7;
+      }
+
+      &:nth-child(2),
+      &:nth-child(4),
+      &:nth-child(6) {
+        grid-column: 7 / 13;
+      }
+
+      &:nth-child(6) .equipment__item-title {
+        max-width: 280px;
+      }
+    }
   }
 
   .about-company {
     margin-top: 80px;
+    grid-template-columns: repeat(12, 1fr);
+
+    &__title {
+      grid-column: 1 / 13;
+      font-size: 36px;
+    }
+
     &__images {
+      grid-column: 1/7;
       align-content: start;
       row-gap: 24px;
       column-gap: 26.5px;
@@ -338,19 +650,29 @@ body {
 
     &__image {
       &:nth-child(1) {
-        width: 565px;
+        width: 100%;
+        max-width: 565px;
+        grid-column: 1/7;
         grid-row: 1/2;
       }
 
       &:nth-child(2) {
-        width: 270.08px;
+        width: 100%;
+        max-width: 270.08px;
+        grid-column: 1/4;
         grid-row: 2/3;
       }
 
       &:nth-child(3) {
-        width: 268.48px;
+        width: 100%;
+        max-width: 268.48px;
+        grid-column: 4/7;
         grid-row: 2/3;
       }
+    }
+
+    &__description {
+      grid-column: 7/13;
     }
   }
 
@@ -359,10 +681,18 @@ body {
 @media (min-width: 1920px) {
   body {
     max-width: 1440px;
+    background-color: lightblue;
   }
 
-  .equipment__item:nth-child(6) .equipment__item-title {
-    max-width: 100%;
+  .equipment {
+    &__item {
+      &-title {
+        max-width: 100%;
+      }
+      &:nth-child(6) .equipment__item-title {
+        max-width: 100%;
+      }
+    }
   }
 
   .about-company {
@@ -373,15 +703,15 @@ body {
     }
     &__image {
       &:nth-child(1) {
-        width: 705px;
+        max-width: 705px;
       }
 
       &:nth-child(2) {
-        width: 337px;
+        max-width: 337px;
       }
 
       &:nth-child(3) {
-        width: 335px;
+        max-width: 335px;
       }
     }
   }
