@@ -21,6 +21,7 @@ module.exports = (env) => {
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: '!!html-loader!' + path.resolve(__dirname, 'public/index.html'),
+				favicon: path.resolve(__dirname, 'public/favicon.png')
 			}),
 			new MiniCssExtractPlugin()
 		],
