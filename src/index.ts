@@ -5,6 +5,8 @@ const header: HTMLElement | null = document.querySelector('.header')
 const burger: HTMLElement | null = document.querySelector('.header__burger')
 const navList: HTMLElement | null = document.querySelector('.header__nav-list')
 const specialStock: HTMLElement | null = document.querySelector('.equipment__stock--special')
+const loader: HTMLElement | null = document.querySelector('.loader')
+const startTime: number = Date.now()
 
 const checkScreenSize = (): void => {
     const isDesktop = window.innerWidth >= 1440
@@ -44,6 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     checkScreenSize()
+})
+
+window.addEventListener('load', () => {
+    if (loader) {
+        const elapsedTime = Date.now() - startTime
+        const minimumTime = 1000
+        const remainingTime = Math.max(0, minimumTime - elapsedTime)
+
+        setTimeout(() => {
+            loader.classList.add('loader--hidden')
+        }, remainingTime)
+    }
 })
 
 window.addEventListener('resize', checkScreenSize)
