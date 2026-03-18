@@ -25,6 +25,10 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: Roboto, sans-serif;
   margin: 0 auto 50px;
+
+  &.nav-open {
+    overflow: hidden;
+  }
 }
 
 .header {
@@ -34,6 +38,17 @@ body {
   height: 80px;
   align-items: center;
   position: relative;
+
+  &.nav-open::before {
+    content: '';
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--stroke);
+    z-index: 10001;
+  }
 
   &__logo {
     height: auto;
